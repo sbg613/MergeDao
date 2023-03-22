@@ -1,77 +1,51 @@
 package com.sbg613.main;
 import java.util.ArrayList;
-import java.util.List;
-import com.sbg613.code.*;
-import com.sbg613.vo.*;
+
+import com.sbg613.code.Week;
+import com.sbg613.vo.FlowerVO;
+import com.sbg613.vo.WeekVO;
 
 public class TestMain {
     
     final static String SELECT_KEY_01 = "selectKey01";
     final static String SELECT_KEY_02 = "selectKey02";
-    
-    final static String test01 = "00:00";
-    final static String test02 = "01:00";
 
     public static void main(String[] args) throws Exception {
         // TODO Auto-generated method stub
-        //AutoDAO  , TemplateVO
-
-        for(Week t : Week.values()) {
+        for(Week t : Week.values()) { 
             System.out.println(t + " , "+t.getName());
         }
         
-
+        /*
         for(Flower t : Flower.values()) {
             System.out.println(t + " , "+t.getName());
-        }
+        }*/
         
         System.out.println("=======1======");
-        AutoDAO<TemplateVO> autoDAO = new AutoDAO<TemplateVO>();
+        AutoDAO<WeekVO> autoDAO = new AutoDAO<WeekVO>();
+        WeekVO rs = new WeekVO();
+        rs = autoDAO.selectOne(SELECT_KEY_01, rs);
         
-        TemplateVO rs = autoDAO.selectOne(SELECT_KEY_01);
+        System.out.println("rs=>>" + rs.getWeekCode() +" , "+rs.getWeekName());
         
+        ArrayList<WeekVO> rsList = new ArrayList<WeekVO>();
+        rsList = autoDAO.selectList(SELECT_KEY_02, rsList);
         
-        ArrayList<TemplateVO> arrayListTemplateVO = autoDAO.selectList(SELECT_KEY_02);
+        for (WeekVO o : rsList) {
+        	System.out.println("rs=>>" + o.getWeekCode() +" , "+o.getWeekName());
+		}
+        
         
         
 
         System.out.println("========2=====");
-        AutoDAO<TemplateVO2> autoDAO2 = new AutoDAO<TemplateVO2>();
+        AutoDAO<FlowerVO> autoDAO2 = new AutoDAO<FlowerVO>();
+        FlowerVO rs2 = new FlowerVO();
+        rs2 = autoDAO2.selectOne(SELECT_KEY_01, rs2);
         
-        TemplateVO2 rs2 = autoDAO2.selectOne(SELECT_KEY_01);
-        ArrayList<TemplateVO2> arrayListTemplateVO2 = autoDAO2.selectList(SELECT_KEY_02);
+        ArrayList<FlowerVO> rsList2 = new ArrayList<FlowerVO>();
+        rsList2 = autoDAO2.selectList(SELECT_KEY_02, rsList2);
         
-    
-        System.out.println(getStToMin(test01));
-        System.out.println(getStToMin(test02));
     }
     
-    public static int getStToMin(String sMin) {
-        
-       String[] spMin = sMin.split(":");
-
-       int iRs = 0;
-
-       if(spMin.length > 1) {
-          String scHour = spMin[0];
-          String scMin  = spMin[1];
-          
-          iRs = (Integer.parseInt(scHour) * 60) + Integer.parseInt(scMin);
-       }
-
-       return iRs;
-    }
-    
-    public static int getSpTerm(int iSSt, int iESt, int iSSp, int iESp) {
-        
-        if((iESt - iSSt) > 0) {
-            int[] arrTime;
-            for(int i = iSSt; i <= iESt; i++) {
-               
-            }
-            
-        }
-        
-        return 0;
-    }
 }
