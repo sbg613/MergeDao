@@ -1,13 +1,11 @@
 package com.sbg613.main;
 import java.util.ArrayList;
 
-import com.sbg613.code.Week;
-import com.sbg613.vo.WeekVO;
-
 public class AutoDAO<T> {
 
     public T selectOne(String keyName, T obj) throws Exception {
-        System.out.println(keyName + " , selectOne :: " + obj.getClass());
+    	
+        System.out.println(keyName + " , " + obj.getClass());
 
         /*체크용
         WeekVO rTest =  new WeekVO();
@@ -16,14 +14,15 @@ public class AutoDAO<T> {
         
         obj = (T) rTest;
         */
-        System.out.println(keyName + " , selectOne :2: " + obj.getClass());
         
         return obj;
     }
     
     public ArrayList<T> selectList(String keyName, ArrayList<T> oList) throws Exception {
-        System.out.println(keyName + " , selectList :: " + oList.getClass());
+    	
+        System.out.println(keyName + " , " + oList.getClass());
         
+        /*
         ArrayList<WeekVO> rs = new ArrayList<WeekVO>();
         WeekVO rObj = null;
         for(Week o : Week.values()) {
@@ -32,13 +31,9 @@ public class AutoDAO<T> {
         	rObj.setWeekName(o.getName());
         	rs.add(rObj);
         }
-        
-        
-        oList = (ArrayList<T>) rs;
-        
-        System.out.println(keyName + " , selectList :: " + oList.getClass());
-        
-        
+         oList = (ArrayList<T>) rs;
+        */
+      
         return oList;
     }
     
